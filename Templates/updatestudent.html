@@ -1,0 +1,54 @@
+{% extends 'bootstrap.html' %}
+{% block body %}
+<div class="container">
+    <h2>Update Student</h2>
+<form  method="post">
+    {% csrf_token %}
+    <div class="form-outline mb-4">
+    <input type="text" id="tbfname" name="tbfname" class="form-control" value="{{data.Fname}}"/>
+    <label class="form-label" for="tbfname">Fname</label>
+  </div>
+    <div class="form-outline mb-4">
+    <input type="text" id="tblname" name="tblname" class="form-control" value="{{data.Lname}}"/>
+    <label class="form-label" for="tblname">Lname</label>
+  </div>
+    <div class="form-outline mb-4">
+    <input type="email" id="tbemail" name="tbemail" class="form-control" value="{{data.Email}}"/>
+    <label class="form-label" for="tbemail">Email</label>
+  </div>
+    <div class="form-outline mb-4">
+    <input type="number" id="tbnum" name="tbnum" class="form-control"value="{{data.Mobileno}}"/>
+    <label class="form-label" for="tbnum">Mobileno</label>
+  </div>
+
+    <div class="form-outline mb-4">
+        <select name="ddlcity" class="form-control" >
+            <option selected>{{data.City}}</option>
+            <option>---SELECT---</option>
+            {% for City in cities %}
+            <option>{{ City.city_name }}</option>
+            {% endfor %}
+<!--            <input type="text" id="tbcity" name="tbcity" class="form-control"/>-->
+        </select>
+    <label class="form-label" >City</label>
+  </div>
+    <div class="form-outline mb-4">
+        <select name="ddlcourse" class="form-control" >
+            <option selected>{{data.Course}}</option>
+            <option>---SELECT---</option>
+            {% for Course in courses %}
+            <option>{{ Course.course_name }}</option>
+            {% endfor %}
+<!--            <input type="text" id="tbcourse" name="tbcourse" class="form-control"/>-->
+        </select>
+    <label class="form-label" >Course</label>
+  </div>
+<div class="form-outline mb-4">
+    <input type="submit" value="Update Student" class="btn btn-success"/>
+  </div>
+
+
+
+</form>
+    </div>
+{% endblock %}
